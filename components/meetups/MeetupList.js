@@ -2,9 +2,6 @@ import MeetupItem from "./MeetupItem"
 import classes from "./MeetupList.module.css"
 
 function MeetupList(props) {
-    if (!props.meetups) {
-        return <p>Loading...</p>
-    }
     return (
         <ul className={classes.list}>
             {props.meetups.map(meetup => (
