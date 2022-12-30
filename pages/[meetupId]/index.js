@@ -4,6 +4,9 @@ import {Fragment} from "react";
 import Head from "next/head";
 
 const MeetupDetails = ({meetupData}) => {
+    if (!meetupData) {
+        return <p>Loading...</p>
+    }
     return (
         <Fragment>
             <Head>
@@ -34,7 +37,7 @@ export async function getStaticPaths() {
 
 
     return {
-        fallback: true,
+        fallback: 'blocking',
         paths: meetups.map(meetup => ({params: {meetupId: meetup._id.toString()}}))
     }
 }
