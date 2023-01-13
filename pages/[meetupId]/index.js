@@ -11,6 +11,7 @@ const MeetupDetails = ({meetupData}) => {
                 <meta name={'description'} content={meetupData.title}/>
             </Head>
             <MeetupDetail
+                id={meetupData.id}
                 image={meetupData.image}
                 title={meetupData.title}
                 address={meetupData.address}

@@ -2,6 +2,15 @@
     text-align: center;
 }
 
-.detail img{
+.detail img {
     width: 100%;
+}
+
+
+.delete {
+    margin-top: 60px;
+}
+
+.delete button, .delete input {
+    padding: 10px;
 }

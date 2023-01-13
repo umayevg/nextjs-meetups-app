@@ -8,6 +8,7 @@ function NewMeetupForm(props) {
     const imageInputRef = useRef()
     const addressInputRef = useRef()
     const descriptionInputRef = useRef()
+    const passwordInputRef = useRef()
 
     function submitHandler(event) {
         event.preventDefault()
@@ -16,13 +17,17 @@ function NewMeetupForm(props) {
         const enteredImage = imageInputRef.current.value
         const enteredAddress = addressInputRef.current.value
         const enteredDescription = descriptionInputRef.current.value
+        const enteredPassword = passwordInputRef.current.value
 
         const meetupData = {
             title: enteredTitle,
             image: enteredImage,
             address: enteredAddress,
             description: enteredDescription,
+            password: enteredPassword
         }
+
+        if (enteredPassword.trim().length < 5) return
 
         props.onAddMeetup(meetupData)
     }
@@ -41,6 +46,10 @@ function NewMeetupForm(props) {
                 <div className={classes.control}>
                     <label htmlFor="address">Address</label>
                     <input type="text" required id="address" ref={addressInputRef}/>
+                </div>
+                <div className={classes.control}>
+                    <label htmlFor="password">Password</label>
+                    <input type="password" required id="password" ref={passwordInputRef} placeholder={'min 5 chars.'}/>
                 </div>
                 <div className={classes.control}>
                     <label htmlFor="description">Description</label>

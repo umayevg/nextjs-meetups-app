@@ -1,8 +1,12 @@
 import {MongoClient} from 'mongodb'
+import bcrypt from "bcrypt";
 
 async function handler(req, res) {
     if (req.method === 'POST') {
-        const data = req.body
+        let data = req.body
+
+        data = {...data, password: await bcrypt.hash(data.password, 10)}
+
 
         const client = await MongoClient.connect(process.env.MONGO_ATLAS_URL)
         const db = client.db()
